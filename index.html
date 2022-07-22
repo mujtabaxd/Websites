@@ -10,7 +10,7 @@
     <div style="max-width: 768px; margin: auto;">
 
       <!-- contact form -->
-      <div class="card">
+      <div class="card request">
         <h2 class="card-header">reCaptcha Check</h2>
         <div class="card-body">
           <form class="contact_form" method="post" action="verify.php">
@@ -19,11 +19,19 @@
               <div class="col-12">
                 <input type="submit" value="Fire Request" class="btn btn-success" name="post">
               </div>
-
               <!-- hidden reCaptcha token input -->
               <input type="hidden" id="token" name="token">
             </div>
           </form>
+        </div>
+      </div>
+      <br>
+      <!-- result form-->
+      <div class="card response">
+        <h2 class="card-header response">Result</h2>
+        <div class="card-body response">
+          <!-- response goes here... -->
+          <p class="temp">Press the Fire Request button first...</p>
         </div>
       </div>
     </div>
