@@ -14,46 +14,30 @@
         <h2 class="card-header">reCaptcha Check</h2>
         <div class="card-body">
           <form class="contact_form" method="post" action="verify.php">
-
             <!-- form fields -->
             <div class="row">
-              <div class="col-12 form-group">
-                <textarea name="message" class="form-control" rows="5" placeholder="Message" required></textarea>
-              </div>
-
-              <!-- form message prompt -->
-              <div class="row">
-                <div class="col-12">
-                  <div class="contact_msg" style="display: none">
-                    <p>Your message was sent.</p>
-                  </div>
-                </div>
-              </div>
-
               <div class="col-12">
-                <input type="submit" value="Submit Form" class="btn btn-success" name="post">
+                <input type="submit" value="Fire Request" class="btn btn-success" name="post">
               </div>
 
               <!-- hidden reCaptcha token input -->
               <input type="hidden" id="token" name="token">
             </div>
-
           </form>
         </div>
       </div>
-
     </div>
   </section>
   <script>
     grecaptcha.ready(function () {
-      grecaptcha.execute('your-site-key-here', { action: 'homepage' }).then(function (token) {
+      grecaptcha.execute('6Le8iRAhAAAAAPMXtuCuqxI07KZ48Vsa2GSIRYwJ', { action: 'homepage' }).then(function (token) {
         // console.log(token);
         document.getElementById("token").value = token;
       });
       // refresh token every minute to prevent expiration
       setInterval(function () {
-        grecaptcha.execute('your-site-key-here', { action: 'homepage' }).then(function (token) {
-          console.log('refreshed token:', token);
+        grecaptcha.execute('6Le8iRAhAAAAAPMXtuCuqxI07KZ48Vsa2GSIRYwJ', { action: 'homepage' }).then(function (token) {
+          console.log('Refreshed Token:', token);
           document.getElementById("token").value = token;
         });
       }, 60000);
