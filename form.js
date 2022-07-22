@@ -1,7 +1,7 @@
 (function ($) {
   "use strict";
 
-  var form = $(".contact_form"),
+  var button = $(".btn-success"),
     message = $(".contact_msg"),
     form_data;
 
@@ -24,7 +24,7 @@
     }, 10000);
   }
 
-  form.submit(function (e) {
+  button.submit(function (e) {
     e.preventDefault();
     form_data = $(this).serialize();
     $.ajax({
