@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   # BEGIN Setting reCaptcha v3 validation data
   $url = "https://www.google.com/recaptcha/api/siteverify";
   $data = [
-    'secret' => "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
+    'secret' => "6Le8iRAhAAAAAOkG6b8Pt8pPnaMV4VFrTH3i2SZK",
     'response' => $_POST['token'],
     'remoteip' => $_SERVER['REMOTE_ADDR']
   ];
