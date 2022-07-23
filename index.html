@@ -11,14 +11,15 @@
 </head>
 
 <body>
-
   <div class="container-full vh-100 bg-dark position-relative p-2 d-flex justify-content-center">
-    <!-- Example Code -->
-    <div class="card wrapper border-0 position-absolute top-50 start-50 translate-middle">
+    <!-- Card Component -->
+    <div class="card wrapper border-0 position-absolute top-50 start-50 translate-middle flex-column">
+      <!-- flex-column-1 -->
       <h3 class="card-header text-center text-bg-primary">
         reCaptcha v3 Demo
       </h3>
-      <div class="card-body">
+      <!-- flex-column-2 -->
+      <div class="card-body flex-row">
         <h5 class="card-title text-center">Request scores</h5>
         <hr>
         <div class="card-text mb-3">The reCAPTCHA v3 API provides a confidence score for each request.</br>
@@ -27,16 +28,16 @@
           type of traffic. In production, refer to the distribution of scores shown in your admin interface and adjust
           your own threshold accordingly.
         </div>
-        <div class="text-center">
+        <div class="button text-center">
           <button class="btn btn-primary" type="submit" onclick=callback()>Fire Request</button>
         </div>
 
       </div>
     </div>
+    <!-- Card Component End -->
   </div>
-
-  <!-- End Example Code -->
 </body>
+
 <script>
   function callback() {
     console.log('button clicked!')
