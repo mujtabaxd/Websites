@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <title>reCaptcha v3 Score</title>
-  <!-- <script src="https://www.google.com/recaptcha/api.js?render=6Le8iRAhAAAAAPMXtuCuqxI07KZ48Vsa2GSIRYwJ"></script> -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6Le8iRAhAAAAAPMXtuCuqxI07KZ48Vsa2GSIRYwJ"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="index.js"></script>
 </head>
@@ -31,16 +31,14 @@
           your own threshold accordingly.
         </div>
         <div class="button text-center">
-          <button class="btn btn-primary" type="submit" onclick=callback()>Fire Request</button>
+          <button class="btn btn-primary g-recaptcha" type="submit" onclick=callback()>Fire Request</button>
         </div>
 
       </div>
     </div>
     <div class="card response border-0 position-relative top-0 start-50 translate-end">
       <div class="card-text p-2 text-bg-success">Response returned from the server.</div>
-      <div class="card response-body p-2" id="response">
-        result appear here...
-      </div>
+      <pre class="card response-body m-2 border-3" id="response"><code>{}</code></pre>
     </div>
     <!-- Card Component End -->
   </div>
@@ -50,7 +48,8 @@
 <script type="text/javascript">
   function callback() {
     console.log('button clicked!')
-    testurl()
+    // test()
+    getRecaptchaToken()
   }
 </script>
 
