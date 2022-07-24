@@ -3,3 +3,9 @@
     max-width: 450px;
     overflow: auto;
 }
+
+.response {
+    max-height: 500px;
+    max-width: 450px;
+    overflow: auto;
+}
