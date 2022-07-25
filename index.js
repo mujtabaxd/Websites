@@ -3,7 +3,7 @@ function getRecaptchaToken() {
   grecaptcha.ready(function () {
     grecaptcha.execute('6Le8iRAhAAAAAPMXtuCuqxI07KZ48Vsa2GSIRYwJ', { action: 'verifyToken' })
       .then((token) => {
-        console.log('Token retrieved. Sending request to backend...')
+        console.log('Token retrieved. Sending to backend...')
         verifyRecaptchaToken(token)
       });
   });
@@ -11,27 +11,29 @@ function getRecaptchaToken() {
 
 function verifyRecaptchaToken(token) {
   const requestOptions = {
-    method: 'GET'
+    method: 'POST'
   }
 
   fetch('validate.php?token=' + token, requestOptions)
     .then((response) => {
-      return response.json()
+      return response.text()
     })
-    .then(data => {
-      // console.log(data)
+    .then((data) => {
+      console.log(data)
       var respDiv = document.getElementById('response')
       respDiv.innerHTML = data
     })
-    .catch(error => console.log('site-verify-error', error))
+    .catch((error) => {
+      console.error(error)
+    })
 }
 
 function test() {
   var requestOptions = {
-    method: 'POST'
+    method: 'GET'
   }
 
-  fetch("validate.php?test=123", requestOptions)
+  fetch("validate.php", requestOptions)
     .then((response) => {
       return response.json()
     })
@@ -39,9 +41,6 @@ function test() {
       console.log(data);
       const respDiv = document.getElementById('response')
       respDiv.innerHTML = JSON.stringify(data)
-      // if (data.match('success')) {
-      //   respDiv.innerHTML = data
-      // }
     })
     .catch((error) => {
       console.error(error)

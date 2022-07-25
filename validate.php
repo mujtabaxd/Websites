@@ -24,11 +24,11 @@ function verifyCaptcha()
 {
     try {
         require_once('config.php');
-
+        $token = '';
         $url = 'https://www.google.com/recaptcha/api/siteverify';
         $data = [
             'secret'   => $SECRET_KEY,
-            'response' => $_POST['token'],
+            'response' => $token,
             'remoteip' => $_SERVER['REMOTE_ADDR']
         ];
 
@@ -45,11 +45,11 @@ function verifyCaptcha()
         header('Content-Type: application/json');
         return $result;
     } catch (Exception $e) {
-        return null;
+        return $e;
     }
 }
 
-function testURL()
+function mockData()
 {
     $url = "https://postman-echo.com/get";
     $data = [
@@ -70,5 +70,7 @@ function testURL()
     return $result;
 }
 
-$request = testURL();
+
+
+$request = verifyCaptcha();
 print($request);
