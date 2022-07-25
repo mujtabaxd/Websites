@@ -11,13 +11,13 @@ function getRecaptchaToken() {
 
 function verifyRecaptchaToken(token) {
   const requestOptions = {
-    method: 'POST',
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json'
     }
   }
 
-  fetch('verify.php?token=' + token, requestOptions)
+  fetch('validate.php?token=' + token, requestOptions)
     .then((response) => {
       return response.text()
     })

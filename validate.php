@@ -36,8 +36,7 @@ function verifyCaptcha()
     );
     curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     $resp = curl_exec($curl);
-    // echo($resp);
-    // print('<div class="card response-body p-2" id="response">'.$resp.'</div>');
+    // header();
     print($resp);
     curl_close($curl);
 }
