@@ -11,42 +11,42 @@ function getRecaptchaToken() {
 
 function verifyRecaptchaToken(token) {
   const requestOptions = {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    }
+    method: 'GET'
   }
 
   fetch('validate.php?token=' + token, requestOptions)
     .then((response) => {
-      return response.text()
+      return response.json()
     })
     .then(data => {
       // console.log(data)
       var respDiv = document.getElementById('response')
       respDiv.innerHTML = data
     })
-    .catch(error => console.log('site-verify-error', error));
+    .catch(error => console.log('site-verify-error', error))
 }
 
 function test() {
   var requestOptions = {
     method: 'POST',
-  };
+    header: {
+      "Content-Type": "application/json"
+    }
+  }
 
-  fetch("verify.php?token=test-token", requestOptions)
+  fetch("validate.php?token=test-token", requestOptions)
     .then((response) => {
       return response.text()
     })
-    .then((text) => {
-      console.log(text);
+    .then((data) => {
+      console.log(data);
       const respDiv = document.getElementById('response')
-      respDiv.innerHTML = text
-      // if (text.match('#response')) {
-      //   respDiv.innerHTML = text
-      // }
+      // respDiv.innerHTML = data
+      if (data.match('success')) {
+        respDiv.innerHTML = data
+      }
     })
     .catch((error) => {
-      console.error(error);
+      console.error(error)
     })
 }

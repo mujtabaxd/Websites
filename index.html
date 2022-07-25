@@ -6,22 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <title>reCaptcha v3 Score</title>
-  <script src="https://www.google.com/recaptcha/api.js?render=6Le8iRAhAAAAAPMXtuCuqxI07KZ48Vsa2GSIRYwJ"></script>
+  <title>reCaptcha v3 Demo</title>
+  <!-- <script src="https://www.google.com/recaptcha/api.js?render=6Le8iRAhAAAAAPMXtuCuqxI07KZ48Vsa2GSIRYwJ"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="index.js"></script>
 </head>
 
-<body>
-  <div class="container-full vh-100 bg-dark position-relative p-2 gap-5 d-flex flex-column justify-content-center">
-    <!-- Card Component -->
-    <div class="card wrapper border-0 flex-column position-relative top-0 start-50 translate-end">
+<body class="bg-dark">
+  <div class="container-fluid h-100 position-absolute p-2 gap-5 d-flex flex-wrap align-items-center justify-content-center">
+    <!-- Card Component start-->
+    <div class="card wrapper border-0 flex-column position-relative top-0 start-0 translate-start">
       <!-- flex-column-1 -->
       <h3 class="card-header text-center text-bg-primary">
         reCaptcha v3 Demo
       </h3>
       <!-- flex-column-2 -->
-      <div class="card-body flex-row">
+      <div class="card-body">
         <h5 class="card-title text-center">Request scores</h5>
         <hr>
         <div class="card-text mb-3">The reCAPTCHA v3 API provides a confidence score for each request.</br>
@@ -36,20 +36,22 @@
 
       </div>
     </div>
-    <div class="card response border-0 position-relative top-0 start-50 translate-end">
-      <div class="card-text p-2 text-bg-success">Response returned from the server.</div>
-      <pre class="card response-body m-2 border-3" id="response"><code>{}</code></pre>
+    <!-- Card Component end -->
+    <!-- Response body start -->
+    <div class="card response border-0 flex-column position-relative top-0 start-0 translate-end">
+      <h4 class="card-header text-bg-success">Recieved Score</h4>
+      <pre class="card response-body p-2 m-2 border-3" id="response"><code>{}</code></pre>
     </div>
-    <!-- Card Component End -->
+    <!-- Response body end -->
   </div>
 
 </body>
 
 <script type="text/javascript">
   function callback() {
-    console.log('button clicked!')
-    // test()
-    getRecaptchaToken()
+    console.log('Request Fired!')
+    test()
+    // getRecaptchaToken()
   }
 </script>
 
