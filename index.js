@@ -28,20 +28,17 @@ function verifyRecaptchaToken(token) {
 
 function test() {
   var requestOptions = {
-    method: 'GET',
-    header: {
-      "Content-Type": "application/json"
-    }
+    method: 'POST'
   }
 
-  fetch("validate.php", requestOptions)
+  fetch("validate.php?test=123", requestOptions)
     .then((response) => {
-      return response.text()
+      return response.json()
     })
     .then((data) => {
       console.log(data);
       const respDiv = document.getElementById('response')
-      respDiv.innerHTML = data
+      respDiv.innerHTML = JSON.stringify(data)
       // if (data.match('success')) {
       //   respDiv.innerHTML = data
       // }

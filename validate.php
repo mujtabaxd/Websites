@@ -22,44 +22,53 @@ function requestDump()
 
 function verifyCaptcha()
 {
-    require('config.php');
-    $token = $_REQUEST['token'];
-    $url = "https://www.google.com/recaptcha/api/siteverify?secret=$SECRET_KEY&response=$token";
+    try {
+        require_once('config.php');
 
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_POST, true);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = [
+            'secret'   => $SECRET_KEY,
+            'response' => $_POST['token'],
+            'remoteip' => $_SERVER['REMOTE_ADDR']
+        ];
 
-    $headers = array(
-        "Content-Type: application/json",
-    );
-    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-    $resp = curl_exec($curl);
-    echo ($resp);
-    curl_close($curl);
+        $options = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'POST',
+                'content' => http_build_query($data)
+            ]
+        ];
+
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+        header('Content-Type: application/json');
+        return $result;
+    } catch (Exception $e) {
+        return null;
+    }
 }
 
 function testURL()
 {
-    $url = "https://jsonplaceholder.typicode.com/todos/1";
+    $url = "https://postman-echo.com/get";
+    $data = [
+        'test' => $_GET['test']
+    ];
 
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $options = [
+        'http' => [
+            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method'  => 'GET',
+            'content' => http_build_query($data)
+        ]
+    ];
 
-    $headers = array(
-        "Content-Type: application/json",
-    );
-    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-    $resp = curl_exec($curl);
-    echo ($resp);
-    curl_close($curl);
+    $context  = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
+    header('Content-Type: application/json');
+    return $result;
 }
 
-testURL();
-
-// $elem = '<div class="card response-body p-2" id="response">success</div>';
-// print($elem);
-
-// requestDump();
+$request = testURL();
+print($request);
