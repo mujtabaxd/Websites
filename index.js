@@ -28,7 +28,7 @@ function verifyRecaptchaToken(token) {
 
 function test() {
   var requestOptions = {
-    method: 'POST',
+    method: 'GET',
     header: {
       "Content-Type": "application/json"
     }
