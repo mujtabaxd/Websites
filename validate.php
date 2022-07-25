@@ -24,23 +24,25 @@ function requestDump()
     return "<pre>" . print_r($data) . "<pre>";
 }
 
-$token = $_REQUEST['token'];
 
-$url = "https://www.google.com/recaptcha/api/siteverify?secret=$SECRET_KEY&response=$token";
+function verifyCaptcha()
+{
+    $token = $_REQUEST['token'];
+    $url = "https://www.google.com/recaptcha/api/siteverify?secret=$SECRET_KEY&response=$token";
 
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-$headers = array(
-    "Content-Type: application/json",
-);
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-$resp = curl_exec($curl);
-// header();
-echo($resp);
-curl_close($curl);
+    $headers = array(
+        "Content-Type: application/json",
+    );
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    $resp = curl_exec($curl);
+    echo ($resp);
+    curl_close($curl);
+}
 
 
 // if (isset($_POST)){
@@ -51,4 +53,3 @@ curl_close($curl);
 // print($elem);
 
 // requestDump();
-
