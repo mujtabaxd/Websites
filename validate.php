@@ -1,9 +1,4 @@
 <?php
-require('config.php');
-
-// echo $SITE_KEY;
-// echo('\n');
-// echo $SECRET_KEY;
 
 function pprint($data)
 {
@@ -27,6 +22,7 @@ function requestDump()
 
 function verifyCaptcha()
 {
+    require('config.php');
     $token = $_REQUEST['token'];
     $url = "https://www.google.com/recaptcha/api/siteverify?secret=$SECRET_KEY&response=$token";
 
@@ -44,10 +40,24 @@ function verifyCaptcha()
     curl_close($curl);
 }
 
+function testURL()
+{
+    $url = "https://jsonplaceholder.typicode.com/todos/1";
 
-// if (isset($_POST)){
-//     $response = $_POST['token'];
-// }
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+    $headers = array(
+        "Content-Type: application/json",
+    );
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    $resp = curl_exec($curl);
+    echo ($resp);
+    curl_close($curl);
+}
+
+testURL();
 
 // $elem = '<div class="card response-body p-2" id="response">success</div>';
 // print($elem);

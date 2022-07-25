@@ -34,17 +34,17 @@ function test() {
     }
   }
 
-  fetch("validate.php?token=test-token", requestOptions)
+  fetch("validate.php", requestOptions)
     .then((response) => {
       return response.text()
     })
     .then((data) => {
       console.log(data);
       const respDiv = document.getElementById('response')
-      // respDiv.innerHTML = data
-      if (data.match('success')) {
-        respDiv.innerHTML = data
-      }
+      respDiv.innerHTML = data
+      // if (data.match('success')) {
+      //   respDiv.innerHTML = data
+      // }
     })
     .catch((error) => {
       console.error(error)
