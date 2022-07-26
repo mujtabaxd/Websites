@@ -44,6 +44,14 @@ function verifyCaptcha()
         $result = file_get_contents($url, false, $context);
         header('Content-Type: application/json');
         return $result;
+        // Returned Response:
+        // {
+        //     "success": true,
+        //     "challenge_ts": "2022-07-26T06:52:55Z",
+        //     "hostname": "recaptcha.pages.dev",
+        //     "score": 0.9,
+        //     "action": "verifyToken"
+        // }
     } catch (Exception $e) {
         return $e;
     }
